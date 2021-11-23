@@ -9,7 +9,6 @@ import TodoScreen from "./src/screens/TodoScreen";
 
 const App = () => {
     //<editor-fold desc="todos elements">
-
     const [todoId, setTodoId] = React.useState(null);
     const [todos, setTodos] = React.useState(initialTodosState);
 
@@ -49,7 +48,6 @@ const App = () => {
             });
         });
     };
-
     //</editor-fold desc="todos elements">
 
 
@@ -66,7 +64,7 @@ const App = () => {
 
 
     return (
-        <View>
+        <View style={css.main}>
             <Navbar title="Todo App!"/>
             <View style={css.container}>
                 {content}
@@ -89,7 +87,11 @@ const initialTodosState = [
 
 
 const css = StyleSheet.create({
+    main: {
+        flex: 1
+    },
     container: {
+        flex: 1,
         paddingHorizontal: 30,
         paddingVertical: 20,
     },
