@@ -10,7 +10,7 @@ const Navbar = ({title}) => {
             <Text style={css.text}>{title}</Text>
         </View>
     );
-}
+};
 
 
 const css = StyleSheet.create({

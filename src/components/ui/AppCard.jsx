@@ -1,5 +1,6 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, View} from "react-native";
+
 
 
 const AppCard = (props) => {
@@ -19,7 +20,7 @@ const css = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
 
-        //<editor-fold desc="OS свойства">
+        //IOS свойства
         shadowColor: "#000",
         shadowRadius: 2,
         shadowOpacity: 0.3,
@@ -27,7 +28,7 @@ const css = StyleSheet.create({
             width: 2,
             height: 3
         },
-        //<editor-fold desc="OS свойства">
+        //IOS свойства
 
         elevation: 8,
         backgroundColor: "#fff",

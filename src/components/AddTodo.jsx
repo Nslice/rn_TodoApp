@@ -1,34 +1,34 @@
 import React from "react";
 import {StyleSheet, Alert, View, TextInput, Button} from "react-native";
+import {Theme} from "../theme";
 
 
 
-const AddTodo = (props) => {
+const AddTodo = ({onSubmit}) => {
     const [text, setText] = React.useState("");
 
     const onPresHandler = () => {
-        if (!text.trim()) {
-            Alert.alert("Error", "Add todo's title");
-        } else {
-            props.onSubmit(text.trim());
+        if (!text.trim())
+            Alert.alert("Error", "Todo's title can't be empty");
+        else {
+            onSubmit(text.trim());
             setText("");
         }
     };
 
     return (
         <View style={css.block}>
-            <TextInput input style={css.input}
+            <TextInput style={css.input}
                        value={text}
                        onChangeText={setText}
                        autoCorrect={false}
                        autoCapitalize="none"
+                       maxLength={60}
                        placeholder="Enter title"
-                       keyboardType="default"
-            />
-            <Button style={css.button}
-                    title="Add"
-                    onPress={onPresHandler}
-            />
+                       keyboardType="default"/>
+            <View style={css.button}>
+                <Button title="Add" onPress={onPresHandler}/>
+            </View>
         </View>
     );
 };
@@ -46,9 +46,11 @@ const css = StyleSheet.create({
         padding: 10,
         borderStyle: "solid",
         borderBottomWidth: 2,
-        borderColor: "#3949ab"
+        borderColor: Theme.MAIN_COLOR
     },
     button: {
+        width: "20%",
+        paddingLeft: 3
     }
 });
 
