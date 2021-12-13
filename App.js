@@ -1,9 +1,20 @@
 import React from "react";
 import {Alert, StyleSheet, View} from "react-native";
+import AppLoading from 'expo-app-loading';
+import * as Font from "expo-font";
 import uuid from "react-native-uuid";
 import MainScreen from "./src/screens/MainScreen";
-import Navbar from "./src/components/Navbar";
 import TodoScreen from "./src/screens/TodoScreen";
+import Navbar from "./src/components/Navbar";
+
+
+
+const loadApp = async () => {
+    await Font.loadAsync({
+        "roboto-regular": require("./assets/fonts/Roboto-Regular.ttf"),
+        "roboto-bold": require("./assets/fonts/Roboto-Bold.ttf")
+    });
+};
 
 
 
@@ -50,6 +61,14 @@ const App = () => {
     };
     //</editor-fold desc="todos elements">
 
+    const [isReady, setIsReady] = React.useState(false);
+
+    if (!isReady) {
+        return <AppLoading startAsync={loadApp}
+                           onFinish={() => setIsReady(true)}
+                           onError={console.error}/>;
+    }
+
 
     let content = <MainScreen todos={todos}
                               addTodo={addTodo}
@@ -58,7 +77,7 @@ const App = () => {
     if (todoId) {
         content = <TodoScreen goBack={() => setTodoId(null)}
                               todo={todos.find(x => x.id === todoId)}
-                              removeTodo={removeTodo.bind(null, null)}
+                              removeTodo={removeTodo}
                               onSave={updateTodo}/>;
     }
 
@@ -75,14 +94,14 @@ const App = () => {
 
 
 const initialTodosState = [
-    {id: uuid.v4(), title: "@types"},
-    {id: uuid.v4(), title: "вернуть"},
-    {id: uuid.v4(), title: "dsexbnm"},
-    {id: uuid.v4(), title: "react"},
-    {id: uuid.v4(), title: "react-native"},
-    {id: uuid.v4(), title: "node.js"},
-    {id: uuid.v4(), title: "nest.js"},
-    {id: uuid.v4(), title: "angular.js"},
+    // {id: uuid.v4(), title: "@types"},
+    // {id: uuid.v4(), title: "вернуть"},
+    // {id: uuid.v4(), title: "dsexbnm"},
+    // {id: uuid.v4(), title: "react"},
+    // {id: uuid.v4(), title: "react-native"},
+    // {id: uuid.v4(), title: "node.js"},
+    // {id: uuid.v4(), title: "nest.js"},
+    // {id: uuid.v4(), title: "angular.js"},
 ];
 
 

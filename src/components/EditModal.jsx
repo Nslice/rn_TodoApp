@@ -1,11 +1,12 @@
-import React, {useState} from "react";
-import {StyleSheet, View, Modal, Button, TextInput, Alert} from "react-native";
+import React from "react";
+import {StyleSheet, View, Modal, TextInput, Alert} from "react-native";
 import {Theme} from "../theme";
+import AppButton from "./ui/AppButton";
 
 
 
 const EditModal = ({visible, value, onClose, onSave}) => {
-    const [title, setTitle] = useState(value);
+    const [title, setTitle] = React.useState(value);
 
     const saveHandler = () => {
         if (!title?.trim())
@@ -16,12 +17,17 @@ const EditModal = ({visible, value, onClose, onSave}) => {
         }
     };
 
+    const closeHandler = () => {
+        setTitle(value);
+        onClose();
+    };
+
 
     return (
         <Modal visible={visible}
                animationType="slide"
                transparent={false}
-               onRequestClose={onClose}>
+               onRequestClose={closeHandler}>
             <View style={css.wrap}>
                 <TextInput style={css.input}
                            value={title}
@@ -34,12 +40,15 @@ const EditModal = ({visible, value, onClose, onSave}) => {
                            keyboardType="default"/>
                 <View style={css.buttons}>
                     <View style={css.button}>
-                        <Button title="Cancel"
-                                onPress={onClose}
-                                color={Theme.DANGER_COLOR}/>
+                        <AppButton onPress={closeHandler}
+                                color={Theme.DANGER_COLOR}>
+                            Cancel
+                        </AppButton>
                     </View>
                     <View style={css.button}>
-                        <Button title="Save" onPress={saveHandler}/>
+                        <AppButton onPress={saveHandler}>
+                            Save
+                        </AppButton>
                     </View>
                 </View>
             </View>

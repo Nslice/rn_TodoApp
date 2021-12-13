@@ -1,10 +1,12 @@
 import React from "react";
-import {StyleSheet, View} from "react-native";
+import {Platform, StyleSheet, View} from "react-native";
 
 
 
 const AppCard = (props) => {
-    const style = {...css.default, ...props.style};
+    const defaultStyle = Platform.select({ios: css.defaultIos});
+    const style = {...css.default, ...defaultStyle, ...props.style};
+
     return (
         <View style={style}>
             {props.children}
@@ -19,20 +21,18 @@ const css = StyleSheet.create({
         padding: 20,
         justifyContent: "space-between",
         alignItems: "center",
-
-        //IOS свойства
+        elevation: 8,
+        backgroundColor: "#fff",
+        borderRadius: 10
+    },
+    defaultIos: {
         shadowColor: "#000",
         shadowRadius: 2,
         shadowOpacity: 0.3,
         shadowOffset: {
             width: 2,
             height: 3
-        },
-        //IOS свойства
-
-        elevation: 8,
-        backgroundColor: "#fff",
-        borderRadius: 10,
+        }
     }
 });
 

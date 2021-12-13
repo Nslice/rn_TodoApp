@@ -1,7 +1,10 @@
 import React from "react";
-import {Button, StyleSheet, Text, View} from "react-native";
+import {StyleSheet,View} from "react-native";
+import {FontAwesome, AntDesign} from "@expo/vector-icons";
 import {Theme} from "../theme";
 import AppCard from "../components/ui/AppCard"
+import AppTextBold from "../components/ui/AppTextBold";
+import AppButton from "../components/ui/AppButton";
 import EditModal from "../components/EditModal";
 
 
@@ -14,27 +17,31 @@ const TodoScreen = ({goBack, todo, removeTodo, onSave}) => {
             <EditModal visible={modalVisible}
                        value={todo.title}
                        onClose={() => setModalVisible(false)}
-                       onSave={(text) => onSave(todo.id, text)}/>
+                       onSave={onSave.bind(null, todo.id)}/>
 
             <AppCard style={css.card}>
                 <View style={css.editField}>
-                    <Text style={css.title}>{todo.title}</Text>
+                    <AppTextBold style={css.title}>{todo.title}</AppTextBold>
                 </View>
                 <View style={css.editButton}>
-                    <Button title="Edit" onPress={() => setModalVisible(true)}/>
+                    <AppButton onPress={() => setModalVisible(true)}>
+                        <FontAwesome name="edit" size={20}/>
+                    </AppButton>
                 </View>
             </AppCard>
 
             <View style={css.bottomButtons}>
                 <View style={css.bottomButton}>
-                    <Button title="Back"
-                            color={Theme.GREY_COLOR}
-                            onPress={goBack}/>
+                    <AppButton onPress={goBack}
+                               color={Theme.GREY_COLOR}>
+                        <AntDesign name="back" size={20} color="white"/>
+                    </AppButton>
                 </View>
                 <View style={css.bottomButton}>
-                    <Button title="Delete"
-                            color={Theme.DANGER_COLOR}
-                            onPress={() => removeTodo(todo.id)}/>
+                    <AppButton onPress={() => removeTodo(todo.id)}
+                               color={Theme.DANGER_COLOR}>
+                        <FontAwesome name="remove" size={20} color="white"/>
+                    </AppButton>
                 </View>
             </View>
         </View>
@@ -51,10 +58,10 @@ const css = StyleSheet.create({
         fontSize: 20
     },
     editField: {
-        width: "80%"
+        flex: 1
     },
     editButton: {
-        width: "20%",
+        flexBasis: 80,
         paddingLeft: 5
     },
     bottomButtons: {

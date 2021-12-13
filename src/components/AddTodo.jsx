@@ -1,5 +1,6 @@
 import React from "react";
-import {StyleSheet, Alert, View, TextInput, Button} from "react-native";
+import {StyleSheet, Alert, View, TextInput, Keyboard} from "react-native";
+import {AntDesign} from "@expo/vector-icons";
 import {Theme} from "../theme";
 
 
@@ -13,6 +14,7 @@ const AddTodo = ({onSubmit}) => {
         else {
             onSubmit(text.trim());
             setText("");
+            Keyboard.dismiss();
         }
     };
 
@@ -27,7 +29,9 @@ const AddTodo = ({onSubmit}) => {
                        placeholder="Enter title"
                        keyboardType="default"/>
             <View style={css.button}>
-                <Button title="Add" onPress={onPresHandler}/>
+                <AntDesign.Button name="pluscircleo" onPress={onPresHandler}>
+                    Add
+                </AntDesign.Button>
             </View>
         </View>
     );
@@ -42,15 +46,15 @@ const css = StyleSheet.create({
         marginBottom: 20,
     },
     input: {
-        width: "80%",
+        flex: 1,
         padding: 10,
+        marginRight: 10,
         borderStyle: "solid",
         borderBottomWidth: 2,
-        borderColor: Theme.MAIN_COLOR
+        borderColor: Theme.MAIN_COLOR,
     },
     button: {
-        width: "20%",
-        paddingLeft: 3
+        flexBasis: 80,
     }
 });
 
