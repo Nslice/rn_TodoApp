@@ -11,22 +11,10 @@ export const MainScreen = () => {
     const {todos, addTodo, removeTodo} = React.useContext(TodoContext);
     const openTodo = React.useContext(ScreenContext).changeScreen;
 
+    const content = (!todos.length)
+        ? <EmptyTodosImage/>
+        : <ListTodos todos={todos} removeTodo={removeTodo} openTodo={openTodo}/>;
 
-    // TODO: https://stackoverflow.com/questions/67454966/whats-the-difference-between-functions-that-render-jsx-vs-declaring-components
-    let content = <FlatList keyExtractor={item => item.id}
-                            data={todos}
-                            renderItem={x => <Todo todo={x.item}
-                                                   onLongPress={removeTodo}
-                                                   onPress={openTodo}/>}/>;
-
-    if (!todos.length) {
-        content = (
-            <View style={css.imgWrap}>
-                <Image style={css.img} source={require("../../assets/no-items.png")}/>
-            </View>
-        );
-
-    }
     return (
         <View style={css.container}>
             <AddTodo onSubmit={addTodo}/>
@@ -34,6 +22,26 @@ export const MainScreen = () => {
         </View>
     );
 };
+
+
+const ListTodos = ({todos, removeTodo, openTodo}) => {
+    return (
+        <FlatList keyExtractor={item => item.id}
+                  data={todos}
+                  renderItem={x => <Todo todo={x.item}
+                                         onLongPress={removeTodo}
+                                         onPress={openTodo}/>}/>
+    );
+};
+
+
+const EmptyTodosImage = () => {
+    return (
+        <View style={css.imgWrap}>
+            <Image style={css.img} source={require("../../assets/no-items.png")}/>
+        </View>
+    );
+}
 
 
 const css = StyleSheet.create({
