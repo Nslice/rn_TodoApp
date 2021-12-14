@@ -1,23 +1,30 @@
 import React from "react";
-import {StyleSheet,View} from "react-native";
+import {StyleSheet, View} from "react-native";
 import {FontAwesome, AntDesign} from "@expo/vector-icons";
+import {ScreenContext} from "../context/screen/screen.context";
+import {TodoContext} from "../context/todo/todo.context";
 import {Theme} from "../theme";
-import AppCard from "../components/ui/AppCard"
-import AppTextBold from "../components/ui/AppTextBold";
-import AppButton from "../components/ui/AppButton";
-import EditModal from "../components/EditModal";
+import {AppCard} from "../components/ui/AppCard"
+import {AppTextBold} from "../components/ui/AppTextBold";
+import {AppButton} from "../components/ui/AppButton";
+import {EditModal} from "../components/EditModal";
 
 
 
-const TodoScreen = ({goBack, todo, removeTodo, onSave}) => {
+export const TodoScreen = () => {
+    const {todos, removeTodo, updateTodo} = React.useContext(TodoContext);
+    const {changeScreen, todoId} = React.useContext(ScreenContext);
+    const todo = todos.find(x => x.id === todoId)
+
     const [modalVisible, setModalVisible] = React.useState(false);
+
 
     return (
         <View>
             <EditModal visible={modalVisible}
                        value={todo.title}
                        onClose={() => setModalVisible(false)}
-                       onSave={onSave.bind(null, todo.id)}/>
+                       onSave={updateTodo.bind(null, todo.id)}/>
 
             <AppCard style={css.card}>
                 <View style={css.editField}>
@@ -32,13 +39,13 @@ const TodoScreen = ({goBack, todo, removeTodo, onSave}) => {
 
             <View style={css.bottomButtons}>
                 <View style={css.bottomButton}>
-                    <AppButton onPress={goBack}
+                    <AppButton onPress={() => changeScreen(null)}
                                color={Theme.GREY_COLOR}>
                         <AntDesign name="back" size={20} color="white"/>
                     </AppButton>
                 </View>
                 <View style={css.bottomButton}>
-                    <AppButton onPress={() => removeTodo(todo.id)}
+                    <AppButton onPress={() => removeTodo(todo)}
                                color={Theme.DANGER_COLOR}>
                         <FontAwesome name="remove" size={20} color="white"/>
                     </AppButton>
@@ -72,7 +79,3 @@ const css = StyleSheet.create({
         width: "40%"
     }
 });
-
-
-
-export default TodoScreen;

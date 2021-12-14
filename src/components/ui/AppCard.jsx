@@ -3,13 +3,13 @@ import {Platform, StyleSheet, View} from "react-native";
 
 
 
-const AppCard = (props) => {
+export const AppCard = ({children, style}) => {
     const defaultStyle = Platform.select({ios: css.defaultIos});
-    const style = {...css.default, ...defaultStyle, ...props.style};
+    const resultStyle = {...css.default, ...defaultStyle, ...style};
 
     return (
-        <View style={style}>
-            {props.children}
+        <View style={resultStyle}>
+            {children}
         </View>
     );
 }
@@ -35,7 +35,3 @@ const css = StyleSheet.create({
         }
     }
 });
-
-
-
-export default AppCard;

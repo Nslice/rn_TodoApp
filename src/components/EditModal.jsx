@@ -1,11 +1,11 @@
 import React from "react";
 import {StyleSheet, View, Modal, TextInput, Alert} from "react-native";
 import {Theme} from "../theme";
-import AppButton from "./ui/AppButton";
+import {AppButton} from "./ui/AppButton";
 
 
 
-const EditModal = ({visible, value, onClose, onSave}) => {
+export const EditModal = ({visible, value, onClose, onSave}) => {
     const [title, setTitle] = React.useState(value);
 
     const saveHandler = () => {
@@ -77,10 +77,6 @@ const css = StyleSheet.create({
         marginTop: 10
     },
     button: {
-        width: "45%"
+        width: "40%"
     }
 });
-
-
-
-export default EditModal;

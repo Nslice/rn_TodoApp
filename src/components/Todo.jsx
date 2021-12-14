@@ -1,14 +1,14 @@
 import React from "react";
-import {StyleSheet, View, TouchableOpacity} from "react-native";
-import AppText from "../components/ui/AppText";
+import {StyleSheet,View, TouchableOpacity} from "react-native";
+import {AppText} from "./ui/AppText";
 
 
 
-const Todo = ({todo, onLongPress, onPress}) => {
+export const Todo = ({todo, onLongPress, onPress}) => {
     return (
         <TouchableOpacity activeOpacity={0.4}
                           onPress={() => onPress(todo.id)}
-                          onLongPress={() => onLongPress(todo.id)}>
+                          onLongPress={() => onLongPress(todo)}>
             <View style={css.todo}>
                 <AppText>{todo.title}</AppText>
             </View>
@@ -29,7 +29,3 @@ const css = StyleSheet.create({
         marginBottom: 5
     },
 });
-
-
-
-export default Todo;

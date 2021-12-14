@@ -5,7 +5,7 @@ import {Theme} from "../theme";
 
 
 
-const AddTodo = ({onSubmit}) => {
+export const AddTodo = ({onSubmit}) => {
     const [text, setText] = React.useState("");
 
     const onPresHandler = () => {
@@ -43,7 +43,7 @@ const css = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        marginBottom: 20,
+        marginBottom: 20
     },
     input: {
         flex: 1,
@@ -51,13 +51,9 @@ const css = StyleSheet.create({
         marginRight: 10,
         borderStyle: "solid",
         borderBottomWidth: 2,
-        borderColor: Theme.MAIN_COLOR,
+        borderColor: Theme.MAIN_COLOR
     },
     button: {
-        flexBasis: 80,
+        flexBasis: 80
     }
 });
-
-
-
-export default AddTodo;

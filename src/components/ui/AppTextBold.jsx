@@ -3,10 +3,12 @@ import {StyleSheet, Text} from "react-native";
 
 
 
-const AppText = ({style, ...props}) => {
+export const AppTextBold = ({children, style}) => {
     const resultStyle = {...css.default, ...style};
     return (
-        <Text style={resultStyle}>{props.children}</Text>
+        <Text style={resultStyle}>
+            {children}
+        </Text>
     );
 };
 
@@ -16,7 +18,3 @@ const css = StyleSheet.create({
         fontFamily: "roboto-bold"
     }
 });
-
-
-
-export default AppText;

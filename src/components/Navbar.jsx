@@ -1,11 +1,11 @@
 import React from "react";
 import {StyleSheet, View, Platform} from "react-native";
 import {Theme} from "../theme";
-import AppTextBold from "./ui/AppTextBold";
+import {AppTextBold} from "./ui/AppTextBold";
 
 
 
-const Navbar = ({title}) => {
+export const Navbar = ({title}) => {
     const select = Platform.select({
         ios: css.navbarIos,
         android: css.navbarAndroid
@@ -38,7 +38,3 @@ const css = StyleSheet.create({
         fontSize: 20
     }
 });
-
-
-
-export default Navbar;
