@@ -1,9 +1,9 @@
 import React from "react";
 import {StyleSheet, View, FlatList, Image} from "react-native";
-import {ScreenContext} from "../context/screen/screen.context";
-import {TodoContext} from "../context/todo/todo.context";
-import {AddTodo} from "../components/AddTodo";
-import {Todo} from "../components/Todo";
+import {ScreenContext} from "src/context/screen/screen.context";
+import {TodoContext} from "src/context/todo/todo.context";
+import {AddTodo} from "src/components/AddTodo";
+import {Todo} from "src/components/Todo";
 
 
 

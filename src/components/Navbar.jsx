@@ -1,6 +1,6 @@
 import React from "react";
 import {StyleSheet, View, Platform} from "react-native";
-import {Theme} from "../theme";
+import {Theme} from "src/theme";
 import {AppTextBold} from "./ui/AppTextBold";
 
 

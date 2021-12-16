@@ -1,9 +1,9 @@
 import React from "react";
 import {Alert} from "react-native";
 import uuid from "react-native-uuid";
-import {ADD_TODO, REMOVE_TODO, UPDATE_TODO} from "../types";
+import {ADD_TODO, REMOVE_TODO, UPDATE_TODO} from "src/context/types";
+import {ScreenContext} from "src/context/screen/screen.context";
 import {TodoContext} from "./todo.context";
-import {ScreenContext} from "../screen/screen.context";
 import {todoReducer} from "./todo.reducer";
 
 

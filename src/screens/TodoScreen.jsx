@@ -1,13 +1,13 @@
 import React from "react";
 import {StyleSheet, View} from "react-native";
 import {FontAwesome, AntDesign} from "@expo/vector-icons";
-import {ScreenContext} from "../context/screen/screen.context";
-import {TodoContext} from "../context/todo/todo.context";
-import {Theme} from "../theme";
-import {AppCard} from "../components/ui/AppCard"
-import {AppTextBold} from "../components/ui/AppTextBold";
-import {AppButton} from "../components/ui/AppButton";
-import {EditModal} from "../components/EditModal";
+import {ScreenContext} from "src/context/screen/screen.context";
+import {TodoContext} from "src/context/todo/todo.context";
+import {Theme} from "src/theme";
+import {AppCard} from "src/components/ui/AppCard"
+import {AppTextBold} from "src/components/ui/AppTextBold";
+import {AppButton} from "src/components/ui/AppButton";
+import {EditModal} from "src/components/EditModal";
 
 
 

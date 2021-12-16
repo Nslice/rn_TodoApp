@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet, Alert, View, TextInput, Keyboard} from "react-native";
 import {AntDesign} from "@expo/vector-icons";
-import {Theme} from "../theme";
+import {Theme} from "src/theme";
 
 
 

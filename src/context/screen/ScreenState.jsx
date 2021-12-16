@@ -1,5 +1,5 @@
 import React from "react";
-import {CHANGE_SCREEN} from "../types";
+import {CHANGE_SCREEN} from "src/context/types";
 import {ScreenContext} from "./screen.context";
 import {screenReducer} from "./screen.reducer";
 

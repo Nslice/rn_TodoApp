@@ -1,6 +1,6 @@
 import React from "react";
 import {StyleSheet, View, Modal, TextInput, Alert} from "react-native";
-import {Theme} from "../theme";
+import {Theme} from "src/theme";
 import {AppButton} from "./ui/AppButton";
 
 

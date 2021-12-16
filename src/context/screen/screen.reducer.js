@@ -1,4 +1,4 @@
-import {CHANGE_SCREEN} from "../types";
+import {CHANGE_SCREEN} from "src/context/types";
 
 
 

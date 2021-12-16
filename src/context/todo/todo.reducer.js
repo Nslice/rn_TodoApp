@@ -1,5 +1,5 @@
 import uuid from "react-native-uuid";
-import {ADD_TODO, REMOVE_TODO, UPDATE_TODO} from "../types";
+import {ADD_TODO, REMOVE_TODO, UPDATE_TODO} from "src/context/types";
 
 
 
