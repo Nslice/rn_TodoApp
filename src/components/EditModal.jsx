@@ -1,18 +1,23 @@
 import React from "react";
-import {StyleSheet, View, Modal, TextInput, Alert} from "react-native";
+import {StyleSheet, View, Modal, TextInput, Alert, Keyboard} from "react-native";
 import {Theme} from "src/theme";
 import {AppButton} from "./ui/AppButton";
+import {AppLoader} from "./ui/AppLoader";
+import {TodoContext} from "src/context/todo/todo.context";
 
 
 
 export const EditModal = ({visible, value, onClose, onSave}) => {
+    const {isLoading} = React.useContext(TodoContext);
     const [title, setTitle] = React.useState(value);
 
-    const saveHandler = () => {
+
+    const saveHandler = async () => {
+        Keyboard.dismiss();
         if (!title?.trim())
-            Alert.alert("Error", "Add todo's title");
+            Alert.alert("Error", "Add todo's title", null, {cancelable: true});
         else {
-            onSave(title);
+            await onSave(title);
             onClose();
         }
     };
@@ -29,6 +34,9 @@ export const EditModal = ({visible, value, onClose, onSave}) => {
                transparent={false}
                onRequestClose={closeHandler}>
             <View style={css.wrap}>
+                <Modal visible={isLoading} transparent={true}>
+                    <AppLoader/>
+                </Modal>
                 <TextInput style={css.input}
                            value={title}
                            onChangeText={setTitle}

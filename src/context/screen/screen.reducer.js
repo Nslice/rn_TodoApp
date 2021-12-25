@@ -1,15 +1,13 @@
+import {createReducer} from "@reduxjs/toolkit";
 import {CHANGE_SCREEN} from "src/context/types";
 
 
 
-const handlers = {
-    [CHANGE_SCREEN]: (state, {payload}) => payload,
-
-    DEFAULT: (state) => state
-}
+const changeScreen = (state, action) => action.todoId;
 
 
-export const screenReducer = (state, action) => {
-    const handler = handlers[action.type] ?? handlers.DEFAULT;
-    return handler(state, action);
-};
+export const screenReducer = createReducer(null, (builder) => {
+    return builder
+        .addCase(CHANGE_SCREEN, changeScreen)
+        .addDefaultCase(state => state);
+});

@@ -24,7 +24,7 @@ const css = StyleSheet.create({
         height: 70,
         alignItems: "center",
         justifyContent: "flex-end",
-        paddingBottom: 3,
+        paddingBottom: 3
     },
     navbarAndroid: {
         backgroundColor: Theme.MAIN_COLOR

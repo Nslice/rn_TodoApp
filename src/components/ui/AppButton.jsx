@@ -5,12 +5,18 @@ import {AppTextBold} from "./AppTextBold"
 
 
 
+/**
+ * @param {JSX.Element} children
+ * @param {function} onPress
+ * @param {string} color
+ * @return {JSX.Element}
+ */
 export const AppButton = ({children, onPress, color = Theme.MAIN_COLOR}) => {
     const Wrapper = (Platform.OS === "android") ? TouchableNativeFeedback : TouchableOpacity;
 
     const style = {...css.button, backgroundColor: color};
     return (
-        <Wrapper onPress={onPress} activeOpacity={0.7}>
+        <Wrapper onPress={onPress} activeOpacity={0.4}>
             <View style={style}>
                 <AppTextBold style={css.text}>
                     {children}

@@ -2,6 +2,7 @@ import React from "react";
 import {StyleSheet, Alert, View, TextInput, Keyboard} from "react-native";
 import {AntDesign} from "@expo/vector-icons";
 import {Theme} from "src/theme";
+import {AppText} from "src/components/ui/AppText";
 
 
 
@@ -10,7 +11,7 @@ export const AddTodo = ({onSubmit}) => {
 
     const onPresHandler = () => {
         if (!text.trim())
-            Alert.alert("Error", "Todo's title can't be empty");
+            Alert.alert("Error", "Todo's title can't be empty", null,{cancelable: true});
         else {
             onSubmit(text.trim());
             setText("");
@@ -30,7 +31,7 @@ export const AddTodo = ({onSubmit}) => {
                        keyboardType="default"/>
             <View style={css.button}>
                 <AntDesign.Button name="pluscircleo" onPress={onPresHandler}>
-                    Add
+                    <AppText style={css.buttonText}>Add</AppText>
                 </AntDesign.Button>
             </View>
         </View>
@@ -55,5 +56,8 @@ const css = StyleSheet.create({
     },
     button: {
         flexBasis: 80
+    },
+    buttonText:{
+        color: "white"
     }
 });
