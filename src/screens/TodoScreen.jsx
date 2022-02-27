@@ -12,7 +12,7 @@ import {EditModal} from "src/components/EditModal";
 
 
 export const TodoScreen = () => {
-    const {todos, removeTodo, updateTodo} = React.useContext(TodoContext);
+    const {todos, removeTodo, updateTodo, isLoading} = React.useContext(TodoContext);
     const {changeScreen, todoId} = React.useContext(ScreenContext);
     const todo = todos.find(x => x.id === todoId)
 
@@ -24,7 +24,8 @@ export const TodoScreen = () => {
             <EditModal visible={modalVisible}
                        value={todo.title}
                        onClose={() => setModalVisible(false)}
-                       onSave={updateTodo.bind(null, todo.id)}/>
+                       onSave={updateTodo.bind(null, todo.id)}
+                       isLoading={isLoading}/>
 
             <AppCard style={css.card}>
                 <View style={css.editField}>

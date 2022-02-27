@@ -4,7 +4,7 @@ export class Http {
 
     static async get(url) {
         try {
-            return await request(url, "GET");
+            return await Http.request(url, "GET");
         } catch (err) {
             console.error(err);
             throw err;
@@ -13,7 +13,7 @@ export class Http {
 
     static async post(url, data = {}) {
         try {
-            return await request(url, "POST", data);
+            return await Http.request(url, "POST", data);
         } catch (err) {
             console.error(err);
             throw err;
@@ -22,7 +22,7 @@ export class Http {
 
     static async delete(url) {
         try {
-            return await request(url, "DELETE");
+            return await Http.request(url, "DELETE");
         } catch (err) {
             console.error(err);
             throw err;
@@ -31,25 +31,28 @@ export class Http {
 
     static async patch(url, data = {}) {
         try {
-            return await request(url, "PATCH", data);
+            return await Http.request(url, "PATCH", data);
         } catch (err) {
             console.error(err);
             throw err;
         }
     }
+
+    static async request(url, method = "GET", data) {
+        const config = {
+            method,
+            headers: Http.HEADERS
+        };
+
+        if (method === "POST" || method === "PATCH") {
+            config.body = JSON.stringify(data);
+        }
+        const response = await fetch(url, config);
+        if (response.status === 401)
+            throw new Error("Permission denied");
+        return await response.json();
+    };
 }
 
 
 
-const request = async (url, method = "GET", data) => {
-    const config = {
-        method,
-        headers: Http.HEADERS
-    };
-
-    if (method === "POST" || method === "PATCH") {
-        config.body = JSON.stringify(data);
-    }
-    const response = await fetch(url, config);
-    return await response.json();
-};

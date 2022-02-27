@@ -3,12 +3,10 @@ import {StyleSheet, View, Modal, TextInput, Alert, Keyboard} from "react-native"
 import {Theme} from "src/theme";
 import {AppButton} from "./ui/AppButton";
 import {AppLoader} from "./ui/AppLoader";
-import {TodoContext} from "src/context/todo/todo.context";
 
 
 
-export const EditModal = ({visible, value, onClose, onSave}) => {
-    const {isLoading} = React.useContext(TodoContext);
+export const EditModal = ({visible, value, onClose, onSave, isLoading}) => {
     const [title, setTitle] = React.useState(value);
 
 

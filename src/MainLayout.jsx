@@ -1,9 +1,9 @@
 import React from "react";
 import {StyleSheet, View} from "react-native";
 import {ScreenContext} from "./context/screen/screen.context"
-import {Navbar} from "./components/Navbar";
 import {MainScreen} from "./screens/MainScreen";
 import {TodoScreen} from "./screens/TodoScreen";
+import {Navbar} from "./components/Navbar";
 
 
 

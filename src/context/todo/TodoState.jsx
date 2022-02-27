@@ -24,7 +24,6 @@ export const TodoState = ({children}) => {
     const {changeScreen} = React.useContext(ScreenContext);
     const [state, dispatch] = React.useReducer(todoReducer, initialState);
 
-
     const fetchTodos = async () => {
         try {
             clearError();
@@ -73,9 +72,10 @@ export const TodoState = ({children}) => {
             "Removing",
             `Are you sure to remove todo "${todo.title}"`,
             [
-                {text: "Cancel"},
+                {text: "Cancel", style: "cancel"},
                 {
                     text: "Delete",
+                    style: "destructive",
                     onPress: async () => {
                         try {
                             clearError();

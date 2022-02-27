@@ -2,19 +2,18 @@ import React from "react";
 import {StyleSheet, View, FlatList, Image} from "react-native";
 import {ScreenContext} from "src/context/screen/screen.context";
 import {TodoContext} from "src/context/todo/todo.context";
+import {Theme} from "src/theme";
 import {AppLoader} from "src/components/ui/AppLoader";
 import {AppText} from "src/components/ui/AppText";
+import {AppButton} from "src/components/ui/AppButton";
 import {AddTodo} from "src/components/AddTodo";
 import {Todo} from "src/components/Todo";
-import {Theme} from "src/theme";
-import {AppButton} from "src/components/ui/AppButton";
-
 
 
 
 export const MainScreen = () => {
-    const {todos, fetchTodos, isLoading, error, addTodo, removeTodo} = React.useContext(TodoContext);
     const openTodo = React.useContext(ScreenContext).changeScreen;
+    const {todos, fetchTodos, isLoading, error, addTodo, removeTodo} = React.useContext(TodoContext);
 
     const loadTodos = React.useCallback(async () => await fetchTodos(), [fetchTodos]);
     React.useEffect(() => {
@@ -49,7 +48,7 @@ export const MainScreen = () => {
 
 const ListTodos = ({todos, removeTodo, openTodo}) => {
     return (
-        <FlatList keyExtractor={item => item.id}
+        <FlatList keyExtractor={x => x.id}
                   data={todos}
                   renderItem={x => <Todo todo={x.item}
                                          onLongPress={removeTodo}
@@ -64,7 +63,7 @@ const EmptyTodosImage = () => {
             <Image style={css.img} source={require("assets/no-items.png")}/>
         </View>
     );
-}
+};
 
 
 const css = StyleSheet.create({
