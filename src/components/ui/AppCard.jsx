@@ -19,7 +19,7 @@ const css = StyleSheet.create({
     default: {
         flexDirection: "row",
         padding: 20,
-        justifyContent: "space-between",
+        justifyContent: "space-between", // TODO: проверить, вроде без flex не работает
         alignItems: "center",
         elevation: 8,
         backgroundColor: "#fff",

@@ -11,6 +11,7 @@ export const Navbar = ({title}) => {
         android: css.navbarAndroid
     });
 
+    // TODO: тут лучше не разматывать а юзать array
     return (
         <View style={{...css.navbar, ...select}}>
             <AppTextBold style={css.text}>{title}</AppTextBold>

@@ -3,7 +3,7 @@ import {StyleSheet, View, ActivityIndicator} from "react-native";
 import {Theme} from "src/theme";
 
 
-
+// TODO: rename it
 export const AppLoader = () => {
     return (
         <View style={css.center}>
